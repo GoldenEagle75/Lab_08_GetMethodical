@@ -143,4 +143,14 @@ public class SafeInput {
 
         return confirmation;
     }
+
+    public static String getRegExString(Scanner pipe, String prompt, String regEx){
+        String input;
+        do {
+            System.out.print("\n" +prompt + ": ");
+            input = pipe.nextLine();
+        }while (!input.matches(regEx));
+
+        return input;
+    }
 }
