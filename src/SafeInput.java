@@ -86,4 +86,62 @@ public class SafeInput {
 
         return retInt;
     }
+
+
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high){
+        String trash;
+        boolean done = false;
+        double retDouble = 0;
+
+        do {
+            System.out.print("\n" + prompt + " (in range " + low + "-" + high + ") : ");
+            if (pipe.hasNextDouble()){
+                retDouble = pipe.nextDouble();
+                if (retDouble >= low && retDouble <= high){
+                    done = true;
+                }
+                else {
+                    System.out.println("Enter a valid value in range " + low + "-" + high + ", not " + retDouble + ".");
+                    pipe.nextLine();
+                }
+            }
+            else {
+                System.out.println();
+                trash = pipe.nextLine();
+                System.out.println("Enter a valid value in range " + low + "-" + high + ", not " + trash + ".");
+            }
+        } while(!done);
+
+        pipe.nextLine();
+
+        return retDouble;
+    }
+
+    public static boolean getYNConfirm(Scanner pipe, String prompt){
+        String input;
+        boolean confirmation = false;
+        boolean done = false;
+
+        do {
+            System.out.print("\n" + prompt + " ");
+
+            input = pipe.nextLine();
+
+            if (input.equalsIgnoreCase("Y")){
+                confirmation = true;
+                done = true;
+            }
+            else if (input.equalsIgnoreCase("N")){
+                confirmation = false;
+                done = true;
+            }
+            else {
+                done = false;
+                System.out.println();
+                System.out.println("Enter either Y or N, not " + input + ".");
+            }
+        } while (!done);
+
+        return confirmation;
+    }
 }
