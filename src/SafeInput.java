@@ -120,7 +120,7 @@ public class SafeInput {
     public static boolean getYNConfirm(Scanner pipe, String prompt){
         String input;
         boolean confirmation = false;
-        boolean done = false;
+        boolean done;
 
         do {
             System.out.print("\n" + prompt + " ");
@@ -132,7 +132,6 @@ public class SafeInput {
                 done = true;
             }
             else if (input.equalsIgnoreCase("N")){
-                confirmation = false;
                 done = true;
             }
             else {
