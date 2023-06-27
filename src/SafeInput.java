@@ -9,7 +9,7 @@ public class SafeInput {
      */
     public static String getNonZeroLenString(Scanner pipe, String prompt)
     {
-        String retString = "";  // Set this to zero length. Loop runs until it isn’t
+        String retString;  // Set this to zero length. Loop runs until it isn’t
         do {
             System.out.print("\n" +prompt + ": "); // show prompt add space
             retString = pipe.nextLine();
@@ -21,7 +21,7 @@ public class SafeInput {
 
     public static int getInt(Scanner pipe, String prompt){
         int retInt = 0;
-        String trash = "";
+        String trash;
         boolean done = false;
 
         do {
@@ -40,7 +40,7 @@ public class SafeInput {
     }
     public static double getDouble(Scanner pipe, String prompt){
         double retDouble = 0;
-        String trash = "";
+        String trash;
         boolean done = false;
 
         do {
@@ -58,4 +58,32 @@ public class SafeInput {
         return retDouble;
     }
 
+    public static int getRangedInt(Scanner pipe, String prompt, int low, int high){
+        String trash;
+        boolean done = false;
+        int retInt = 0;
+
+        do {
+            System.out.print("\n" + prompt + " (in range " + low + "-" + high + ") : ");
+            if (pipe.hasNextInt()){
+                retInt = pipe.nextInt();
+                if (retInt >= low && retInt <= high){
+                    done = true;
+                }
+                else {
+                    System.out.println("Enter a valid value in range " + low + "-" + high + ", not " + retInt + ".");
+                    pipe.nextLine();
+                }
+            }
+            else {
+                System.out.println();
+                trash = pipe.nextLine();
+                System.out.println("Enter a valid value in range " + low + "-" + high + ", not " + trash + ".");
+            }
+        } while(!done);
+
+        pipe.nextLine();
+
+        return retInt;
+    }
 }
