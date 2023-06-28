@@ -153,4 +153,45 @@ public class SafeInput {
 
         return input;
     }
+
+    public static void prettyHeader(String msg){
+        double numberOfSpaces;
+        for (int i = 1; i <= 60; i ++){
+            System.out.print("*");
+        }
+
+        System.out.println();
+
+        for (int i = 1; i <= 3; i ++){
+            System.out.print("*");
+        }
+
+        numberOfSpaces = 27 - (double) (msg.length()) /2;
+        int remainder = msg.length() % 2;
+
+        for (int i = 1; i <= numberOfSpaces; i++){
+            System.out.print(" ");
+        }
+
+        if(remainder != 0) {
+           numberOfSpaces += 1;
+        }
+
+        System.out.print(msg);
+
+        for (int i = 1; i <= numberOfSpaces; i++){
+            System.out.print(" ");
+        }
+
+        for (int i = 1; i <= 3; i ++){
+            System.out.print("*");
+        }
+        System.out.println();
+
+        for (int i = 1; i <= 60; i ++){
+            System.out.print("*");
+        }
+
+        System.out.println();
+    }
 }
